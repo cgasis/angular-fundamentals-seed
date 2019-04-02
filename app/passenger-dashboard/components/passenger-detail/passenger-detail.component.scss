@@ -1,0 +1,26 @@
+.status {
+    width: 10px;
+    height: 10px;
+    background: #c0392b;
+    display: block;
+    margin: 8px 10px 0 0;
+    float: left;
+    border-radius: 50%;
+    &.checked-in { 
+        background: #2ecc71;
+    }
+}
+
+.detail {  
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} 
+
+ul { 
+    list-style-type: none; 
+    line-height: 0px;
+}
+
+button { 
+   background-color:#2ecc71;
+}
+
