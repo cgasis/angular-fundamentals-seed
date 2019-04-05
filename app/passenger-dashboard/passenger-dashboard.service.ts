@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 import { Passenger } from './models/passenger-dashboard.interface';
 import { httpFactory } from '@angular/http/src/http_module';
@@ -14,16 +14,15 @@ const PASSENGER_API: string = '/api/passengers';
 export class PassengerDashboardService {
     constructor(private http: Http) { }
 
-    getPassengers(): Promise<Passenger[]> {
+    getPassengers(): Observable<Passenger[]> {
         return this.http
-            .get(PASSENGER_API)
-            .toPromise()
-            .then((response: Response) => {
+            .get(PASSENGER_API) 
+            .map((response: Response) => {
                 return response.json();
             })
     } 
 
-    updatePassengers(passenger: Passenger): Promise<Passenger> {
+    updatePassengers(passenger: Passenger): Observable<Passenger> {
         let options = new RequestOptions({
             headers: new Headers({
                 'Content-Type' : 'application/json'
@@ -31,21 +30,18 @@ export class PassengerDashboardService {
         });
         return this.http
             .put(`${PASSENGER_API}/${passenger.id}`, passenger, options)
-            .toPromise()
-            .then((response: Response) => response.json());
+            .map((response: Response) => response.json());
     }
 
-    editPassengers(passenger: Passenger): Promise<Passenger> {
+    editPassengers(passenger: Passenger): Observable<Passenger> {
         return this.http
-            .put(`${PASSENGER_API}/${passenger.id}`, passenger)
-            .toPromise()
-            .then((response: Response) => response.json());
+            .put(`${PASSENGER_API}/${passenger.id}`, passenger) 
+            .map((response: Response) => response.json());
     }
 
-    removePassengers(passenger: Passenger): Promise<Passenger> {
+    removePassengers(passenger: Passenger): Observable<Passenger> {
         return this.http
-            .delete(`${PASSENGER_API}/${passenger.id}`)
-            .toPromise()
-            .then((response: Response) => response.json());
+            .delete(`${PASSENGER_API}/${passenger.id}`) 
+            .map((response: Response) => response.json());
     }
 }
