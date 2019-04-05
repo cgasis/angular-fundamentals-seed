@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PassengerDashboardService } from '../../passenger-dashboard.service';
 import { Passenger } from '../../models/passenger-dashboard.interface'
 
+
 @Component({
   selector: 'passenger-dashboard',
   styleUrls: ['passenger-dashboard.component.scss'],
@@ -24,30 +25,38 @@ import { Passenger } from '../../models/passenger-dashboard.interface'
 })
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
-  
-  constructor(private passengerService: PassengerDashboardService) {}
+
+  constructor(private passengerService: PassengerDashboardService) { }
 
   ngOnInit() {
-    this.passengers = this.passengerService.getPassengers();
+    this.passengerService
+      .getPassengers()
+      .subscribe((data: Passenger[]) => this.passengers = data);
   }
-  
+
   handleEdit(event: Passenger) {
     // console.log('edit: ', event);r
-    this.passengers = this.passengers.map((passenger: Passenger) => {
-      if(passenger.id === event.id) { 
-        passenger = Object.assign({}, passenger, event);
-        console.log(event.name);
-      }
-      
-      return passenger;
-    });
-    // console.log(this.passengers);
+    this.passengerService
+      .updatePassengers(event)
+      .subscribe((data: Passenger) => {
+        this.passengers = this.passengers.map((passenger: Passenger) => {
+          if (passenger.id === event.id) {
+            passenger = Object.assign({}, passenger, event);
+          }
+          return passenger;
+        });
+      });
   }
 
   handleRemove(event: Passenger) {
-    // console.log('remove: ', event);
-    this.passengers = this.passengers.filter((passenger: Passenger) => {
-      return passenger.id !== event.id;
-    });
-  } 
+    this.passengerService
+        .removePassengers(event)
+        .subscribe((data: Passenger) => { 
+            this.passengers = this.passengers.filter((passenger: Passenger) => {
+              return passenger.id !== event.id;
+            })
+
+        }); 
+    ;
+  }
 }

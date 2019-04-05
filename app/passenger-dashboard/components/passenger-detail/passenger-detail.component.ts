@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Passenger } from '../../models/passenger-dashboard.interface'
-import { prepareFinalAnimationStyles } from '@angular/core/src/animation/animation_style_util';
 
 @Component({
     selector: 'passenger-detail',
@@ -65,7 +64,7 @@ export class PassengerDetailComponent implements OnChanges {
       if (!this.editing) this.edit.emit(this.detail);
     }
     
-    onRemove() { 
+    onRemove() {
       this.remove.emit(this.detail);
     }
 }

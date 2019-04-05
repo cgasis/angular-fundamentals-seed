@@ -1,48 +1,42 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 import { Passenger } from './models/passenger-dashboard.interface';
+import { httpFactory } from '@angular/http/src/http_module';
+
+const PASSENGER_API: string = '/api/passengers';
 
 
 @Injectable()
 export class PassengerDashboardService {
-    constructor(private http: Http) { 
-        console.log(http);
+    constructor(private http: Http) { }
+
+    getPassengers(): Observable<Passenger[]> {
+        return this.http
+            .get(PASSENGER_API)
+            .map((response: Response) => {
+                return response.json();
+            })
+    } 
+
+    updatePassengers(passenger: Passenger): Observable<Passenger> {
+        return this.http
+            .put(`${PASSENGER_API}/${passenger.id}`, passenger)
+            .map((response: Response) => response.json());
     }
 
-    getPassengers(): Passenger[] {
-        return [
-            {
-                id: 1,
-                name: 'Kennedy',
-                checkedindate: 1552924800000,
-                checkin: true,
-                children: [{
-                    name: 'Rose',
-                    age: 21
-                },
-                {
-                    name: 'Michael',
-                    age: 33
-                }]
-            },
-            {
-                id: 2,
-                name: 'Trump',
-                checkedindate: 1288323623006,
-                checkin: true,
-                children: null
-            },
-            {
-                id: 3,
-                name: 'Washington',
-                checkedindate: null,
-                checkin: false,
-                children: [{
-                    name: 'Fely',
-                    age: 21
-                }]
-            }
-        ]
+    editPassengers(passenger: Passenger): Observable<Passenger> {
+        return this.http
+            .put(`${PASSENGER_API}/${passenger.id}`, passenger)
+            .map((response: Response) => response.json());
+    }
+
+    removePassengers(passenger: Passenger): Observable<Passenger> {
+        return this.http
+            .delete(`${PASSENGER_API}/${passenger.id}`)
+            .map((response: Response) => response.json());
     }
 }
