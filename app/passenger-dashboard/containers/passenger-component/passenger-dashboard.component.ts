@@ -6,22 +6,7 @@ import { Passenger } from '../../models/passenger-dashboard.interface'
 @Component({
   selector: 'passenger-dashboard',
   styleUrls: ['passenger-dashboard.component.scss'],
-  template: `  
-      <passenger-count [items]="passengers"></passenger-count> 
-      <div>Names: </div>
-      <ul *ngFor="let passenger of passengers;">
-        <li>
-          {{ passenger.name }}
-        </li>
-      </ul>
-      <passenger-detail  
-            *ngFor="let passenger of passengers;"
-            [detail]="passenger"
-            (edit)="handleEdit($event)"
-            (remove)="handleRemove($event)"
-            >
-      </passenger-detail>  
-    `
+  templateUrl: 'passenger-dashboard.template.html'
 })
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
