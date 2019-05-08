@@ -13,12 +13,19 @@ const PASSENGER_API: string = '/api/passengers';
 
 
 @Injectable()
-export class PassengerDashboardService {
+export class PassengerDashboardService { 
     constructor(private http: Http) { }
 
     getPassengers(): Observable<Passenger[]> {
         return this.http
             .get(PASSENGER_API)
+            .map((response: Response) => response.json())
+            .catch((error: any) => Observable.throw(error.json()));
+    }
+
+    getPassenger(id: Number): Observable<Passenger> {
+        return this.http
+            .get(`${PASSENGER_API}/${id}`)
             .map((response: Response) => response.json())
             .catch((error: any) => Observable.throw(error.json()));
     }
