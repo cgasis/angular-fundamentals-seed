@@ -18,34 +18,34 @@ export class PassengerDashboardService {
 
     getPassengers(): Observable<Passenger[]> {
         return this.http
-            .get(PASSENGER_API) 
+            .get(PASSENGER_API)
             .map((response: Response) => response.json())
             .catch((error: any) => Observable.throw(error.json()));
-    } 
+    }
 
     updatePassengers(passenger: Passenger): Observable<Passenger> {
         let options = new RequestOptions({
             headers: new Headers({
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             })
         });
         return this.http
             .put(`${PASSENGER_API}/${passenger.id}`, passenger, options)
             .map((response: Response) => response.json())
             .catch((error: any) => Observable.throw(error.json()));
-            
+
     }
 
     editPassengers(passenger: Passenger): Observable<Passenger> {
         return this.http
-            .put(`${PASSENGER_API}/${passenger.id}`, passenger) 
+            .put(`${PASSENGER_API}/${passenger.id}`, passenger)
             .map((response: Response) => response.json())
             .catch((error: any) => Observable.throw(error.json()));
     }
 
     removePassengers(passenger: Passenger): Observable<Passenger> {
         return this.http
-            .delete(`${PASSENGER_API}/${passenger.id}`) 
+            .delete(`${PASSENGER_API}/${passenger.id}`)
             .map((response: Response) => response.json())
             .catch((error: any) => Observable.throw(error.json()));
     }
