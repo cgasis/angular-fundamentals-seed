@@ -19,7 +19,6 @@ import { PassengerDashboardService } from './passenger-dashboard.service';
         HttpModule
     ],
     declarations: [PassengerDashboardComponent, PassengerCountComponent, PassengerDetailComponent],
-    exports: [PassengerDashboardComponent],
-    providers: [PassengerDashboardService]
+    exports: [PassengerDashboardComponent]
 })
 export class PassengerDashboardModule{}
