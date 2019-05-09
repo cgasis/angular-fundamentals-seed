@@ -9,19 +9,31 @@
     },
     {
       "id": 2,
-      "name": "Genaro Vinyard",
-      "checkedindate": null,
-      "checkin": false,
-      "children": [
-        {
-          "name": "Carlene Gilliard",
-          "age": 21
-        },
-        {
-          "name": "Lidia Infante",
-          "age": 21
-        }
-      ]
-    }
+      "name": "Kiera Collins",
+      "checkedindate": 1288323623006,
+      "checkin": true,
+      "children": null
+    },
+    {
+      "id": 3,
+      "name": "Sheikh Orozco",
+      "checkedindate": 1288323623006,
+      "checkin": true,
+      "children": null
+    },
+    {
+      "id": 4,
+      "name": "Tracy Emrick",
+      "checkedindate": 1288323623006,
+      "checkin": true,
+      "children": null
+    },
+    {
+      "id": 5,
+      "name": "Phillippa Sparks",
+      "checkedindate": 1288323623006,
+      "checkin": true,
+      "children": null
+    } 
   ]
 }
