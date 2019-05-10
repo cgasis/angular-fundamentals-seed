@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { PassengerDashboardService } from './../../passenger-dashboard.service';
 
-import { Passenger } from '../../models/passenger-dashboard.interface';
+import { Passenger } from '../../models/passenger.interface';
 
 @Component({
     selector: 'passenger-viewer',

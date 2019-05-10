@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-import { Passenger } from './models/passenger-dashboard.interface';
+import { Passenger } from './models/passenger.interface';
 import { httpFactory } from '@angular/http/src/http_module';
 
 const PASSENGER_API: string = '/api/passengers';

@@ -48,6 +48,15 @@
                 <input type="text" name="checkedindate" [ngModel]="detail?.checkedindate"/>
             </div>
 
+            <div>
+                Luggage:
+                <select name="baggage">
+                    <option *ngFor="let item of baggage"
+                        [value]="item.key"
+                    ></option>
+                </select>
+            </div>
+
             {{ form.value | json }}
         </form>       
     </div>
