@@ -2,35 +2,35 @@
   "passengers": [
     {
       "id": 1,
-      "name": "Tracy Emrick",
+      "fullname": "Tracy Emrick",
       "checkedindate": 1288323623006,
       "checkin": true,
       "children": null
     },
     {
       "id": 2,
-      "name": "Kiera Collins",
+      "fullname": "Kiera Collins",
       "checkedindate": 1288323623006,
       "checkin": true,
       "children": null
     },
     {
       "id": 3,
-      "name": "Sheikh Orozco",
+      "fullname": "Sheikh Orozco",
       "checkedindate": 1288323623006,
       "checkin": true,
       "children": null
     },
     {
       "id": 4,
-      "name": "Tracy Emrick",
+      "fullname": "Tracy Emrick",
       "checkedindate": 1288323623006,
       "checkin": true,
       "children": null
     },
     {
       "id": 5,
-      "name": "Phillippa Sparks",
+      "fullname": "Phillippa Sparks",
       "checkedindate": 1288323623006,
       "checkin": true,
       "children": null

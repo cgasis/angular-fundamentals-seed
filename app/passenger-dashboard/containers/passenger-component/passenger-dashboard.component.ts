@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { PassengerDashboardService } from '../../passenger-dashboard.service';
 import { Passenger } from '../../models/passenger.interface'
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'passenger-dashboard',
   styleUrls: ['passenger-dashboard.component.scss'],
-  templateUrl: 'passenger-dashboard.template.html'
+  templateUrl: 'passenger-dashboard.component.html'
 })
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
 
-  constructor(private passengerService: PassengerDashboardService) { }
+  constructor(private router: Router, private passengerService: PassengerDashboardService) { }
 
   ngOnInit() {
     this.passengerService
@@ -35,13 +36,18 @@ export class PassengerDashboardComponent implements OnInit {
 
   handleRemove(event: Passenger) {
     this.passengerService
-        .removePassengers(event)
-        .subscribe((data: Passenger) => { 
-            this.passengers = this.passengers.filter((passenger: Passenger) => {
-              return passenger.id !== event.id;
-            })
+      .removePassengers(event)
+      .subscribe((data: Passenger) => {
+        this.passengers = this.passengers.filter((passenger: Passenger) => {
+          return passenger.id !== event.id;
+        })
 
-        }); 
-    ;
+      });
+
   }
+
+  handleView(event: Passenger) {
+    this.router.navigate(['/passengers', event.id]);
+  }
+
 }

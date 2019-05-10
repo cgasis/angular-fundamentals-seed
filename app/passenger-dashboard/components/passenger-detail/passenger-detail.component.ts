@@ -11,10 +11,13 @@ export class PassengerDetailComponent implements OnChanges {
     detail: Passenger;
 
     @Output()
-    edit: EventEmitter<Passenger> = new EventEmitter();
+    edit: EventEmitter<Passenger> = new EventEmitter<Passenger>();
 
     @Output()
-    remove: EventEmitter<Passenger> = new EventEmitter();
+    remove: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+
+    @Output()
+    view: EventEmitter<Passenger> = new EventEmitter<Passenger>();
 
     editing: boolean = false;
     
@@ -26,7 +29,7 @@ export class PassengerDetailComponent implements OnChanges {
 
     onChangeName(value: string) {
       // console.log(value);
-      this.detail.name = value;
+      this.detail.fullname = value;
     }
 
     onChangeNameToggle() { 
@@ -36,5 +39,9 @@ export class PassengerDetailComponent implements OnChanges {
     
     onRemove() {
       this.remove.emit(this.detail);
+    }
+
+    goToPassenger() { 
+      this.view.emit(this.detail);
     }
 }
